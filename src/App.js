@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// import AddForm from './componenta/AddForm';
 
+import './App.css';
+import { useState } from 'react';
+import Form from './componenta/Form';
+ const addData=[]
 function App() {
+  const [data, setData] = useState(addData)
+	function saveDatToList(dataWithId) {
+		setData((prevState) => {
+			return [ ...prevState,dataWithId]
+		})
+	}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Form onsaveDatToList={saveDatToList}
+     addData={data}/>
+		</div>
   );
 }
 
